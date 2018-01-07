@@ -65,7 +65,7 @@ def updateDisplay(event):
 	if(toBase.get() != Label0_2.config()['text'][4]):
 		updatetext(value)
 	Label0_1.config(text = angle.get())
-#	Label0_3.config(text = fromBase.get())
+	Label0_3.config(text = fromBase.get())
 	Label0_5.config(text = toBase.get())
 
 def Seconde_func():
@@ -465,7 +465,6 @@ Frame2.pack(side=tkinter.LEFT, padx=30, pady=30)
 
 
 # Pannel 2_7
-"""
 Pannel2_7 = tkinter.PanedWindow(Frame2, orient=tkinter.HORIZONTAL)
 Pannel2_7.pack(side=tkinter.TOP, expand=tkinter.Y, fill=tkinter.BOTH, pady=2, padx=2)
 
@@ -473,7 +472,7 @@ Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Dec', variable=from
 Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Bin', variable=fromBase, value="bin"))
 Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Oct', variable=fromBase, value="oct"))
 Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Hexa', variable=fromBase, value="hex"))
-"""
+
 
 # Pannel 2_6
 Pannel2_6 = tkinter.PanedWindow(Frame2, orient=tkinter.HORIZONTAL)

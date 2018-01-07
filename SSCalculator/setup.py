@@ -7,7 +7,7 @@ def read(fname):
 
 setup(
     name='SSCalculator',
-    version='0.1',
+    version='0.2',
     scripts=['sscalculator.py'],
     description='Simple Scientific Calculator',
     author='Savin Yann',
@@ -23,5 +23,5 @@ setup(
 		"Topic :: calculation",
 	],
 	keywords='Simple Scientific Calculator',
-	license='GPL',
+	license='GNU',
 	)

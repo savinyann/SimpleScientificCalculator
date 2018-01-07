@@ -5,18 +5,16 @@ import time
 import math
 import random
 
-
 dot = False
 Seconde = False
 calc_ended = True
-value = 0
 value1 = None
 value2 = None
 value3 = None
 par = []
 par_value = -1
 fenetre = tkinter.Tk()
-displayValue = tkinter.StringVar()
+value = tkinter.DoubleVar()
 sin = tkinter.StringVar()
 cos = tkinter.StringVar()
 tan = tkinter.StringVar()
@@ -26,10 +24,7 @@ sqrt = tkinter.StringVar()
 power = tkinter.StringVar()
 ans = tkinter.StringVar()
 angle = tkinter.StringVar()
-fromBase = tkinter.StringVar()
-toBase = tkinter.StringVar()
-
-displayValue.set("0")
+value.set(0)
 sin.set('sin')
 cos.set('cos')
 tan.set('tan')
@@ -39,34 +34,16 @@ sqrt.set('√')
 power.set('x^y')
 ans.set('Ans')
 angle.set("rad")
-fromBase.set("dec")
-toBase.set("dec")
 
-def convertValue(value, toBase):
-	if(toBase.get() == "dec"):
-		return(str(value))
-	if(toBase.get() == "bin"):
-		return(bin(value)[2:] if (value >= 0) else "-" + bin(-value)[2:])
-	if(toBase.get() == "oct"):
-		return(oct(value)[2:] if (value >= 0) else "-" + oct(-value)[2:])
-	if(toBase.get() == "hex"):
-		return(hex(value)[2:] if (value >= 0) else "-" + hex(-value)[2:])
+def display():
+	print(value.get())
 
-def updatetext(value):
-	global Seconde, calc_ended, displayValue, toBase
-	displayValue.set(convertValue(value, toBase))
-	Label0_0.config(text = displayValue.get())
+def updatetext():
+	global Seconde, calc_ended
+	Label0_0.config(text = value.get())
 	if(Seconde == True):
 		Seconde_func()
 	calc_ended = False
-
-def updateDisplay(event):
-	global value
-	if(toBase.get() != Label0_2.config()['text'][4]):
-		updatetext(value)
-	Label0_1.config(text = angle.get())
-#	Label0_3.config(text = fromBase.get())
-	Label0_5.config(text = toBase.get())
 
 def Seconde_func():
 	global Seconde, sin
@@ -91,107 +68,108 @@ def Seconde_func():
 
 def error():
 	global value	
-	value = 'ERROR'
-	updatetext(value)
+	value = tkinter.StringVar()
+	value.set('ERROR')
+	updatetext()
 
 
 def add_0():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 0
+		value.set(0)
 	else:
-		value = (value * 10)
+		value.set((value.get() * 10))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_1():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 1
+		value.set(1)
 	else:
-		value = (value * 10 + 1 if (dot == False) else value + 1 * math.pow(10, dot))
+		value.set((value.get() * 10 + 1 if (dot == False) else value.get() + 1 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_2():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 2
+		value.set(2)
 	else:
-		value = (value * 10 + 2 if (dot == False) else value + 2 * math.pow(10, dot))
+		value.set((value.get() * 10 + 2 if (dot == False) else value.get() + 2 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_3():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 3
+		value.set(3)
 	else:
-		value = (value * 10 + 3 if (dot == False) else value + 3 * math.pow(10, dot))
+		value.set((value.get() * 10 + 3 if (dot == False) else value.get() + 3 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_4():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 4
+		value.set(4)
 	else:
-		value = (value * 10 + 4 if (dot == False) else value + 4 * math.pow(10, dot))
+		value.set((value.get() * 10 + 4 if (dot == False) else value.get() + 4 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_5():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 5
+		value.set(5)
 	else:
-		value = (value * 10 + 5 if (dot == False) else value + 5 * math.pow(10, dot))
+		value.set((value.get() * 10 + 5 if (dot == False) else value.get() + 5 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_6():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 6
+		value.set(6)
 	else:
-		value = (value * 10 + 6 if (dot == False) else value + 6 * math.pow(10, dot))
+		value.set((value.get() * 10 + 6 if (dot == False) else value.get() + 6 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_7():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 7
+		value.set(7)
 	else:
-		value = (value * 10 + 7 if (dot == False) else value + 7 * math.pow(10, dot))
+		value.set((value.get() * 10 + 7 if (dot == False) else value.get() + 7 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_8():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 8
+		value.set(8)
 	else:
-		value = (value * 10 + 8 if (dot == False) else value + 8 * math.pow(10, dot))
+		value.set((value.get() * 10 + 8 if (dot == False) else value.get() + 8 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 def add_9():
-	global dot, calc_ended, value
+	global dot, calc_ended
 	if(calc_ended == True):
-		value = 9
+		value.set(9)
 	else:
-		value = (value * 10 + 9 if (dot == False) else value + 9 * math.pow(10, dot))
+		value.set((value.get() * 10 + 9 if (dot == False) else value.get() + 9 * math.pow(10, dot)))
 		dot = dot-1 if(dot != False) else dot
-	updatetext(value);
+	updatetext();
 
 def add_pi():
-	global calc_ended, value
-	if(value == 0):
-		value = math.pi
+	global calc_ended
+	if(value.get() == 0):
+		value.set(math.pi)
 	else:
-		value = value * math.pi
-	updatetext(value);
+		value.set(value.get() * math.pi)
+	updatetext();
 	calc_ended = True
 
 def add_e():
-	global calc_ended, value
-	if(value == 0):
-		value = math.exp(1)
+	global calc_ended
+	if(value.get() == 0):
+		value.set(math.exp(1))
 	else:
-		value = value * math.exp(1)
-	updatetext(value);
+		value.set(value.get() * math.exp(1))
+	updatetext();
 	calc_ended = True
 
 def reset_func():
@@ -199,214 +177,218 @@ def reset_func():
 	value1 = None
 	value2 = None
 	value = tkinter.DoubleVar()
-	value = 0
+	value.set(0)
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def equ_func():
 	global value1, value2, value3, value, dot, calc_ended
 	if(value1 != None and value2 != None):
 		if(value2 == "+"):
-			value = value1 + value
+			value.set(value1 + value.get())
 		if(value2 == "-"):
-			value = value1 - value
+			value.set(value1 - value.get())
 		if(value2  == "*"):
-			value = value1 * value
+			value.set(value1 * value.get())
 		if(value2  == "/"):
-			if(value == 0):
+			if(value.get() == 0):
 				error()
 			else:
-				value = value1 / value
+				value.set(value1 / value.get())
 		if(value2 == "^"):
-			value = math.pow(value1, value)
+			value.set(math.pow(value1, value.get()))
 		if(value2 == "√"):
-			value = math.pow(value1, (1 / value))
+			value.set(math.pow(value1, (1 / value.get())))
 		if(value2 == 'x10'):
-			value = value1 * math.pow(10, value)
+			value.set(value1 * math.pow(10, value.get()))
 		value1 = None
 		value2 = None
-		value3 = value
-		updatetext(value)
+		value3 = value.get()
+		updatetext()
 		calc_ended = True
 
 
 def add_func():
-	global value1, value2, value3, dot, value
+	global value1, value2, value3, dot
 	if(value1 != None):
 		equ_func()
-	value1 = value
+	value1 = value.get()
 	value2 = "+"
-	value = 0
+	value.set(0)
 	dot = False
 
 
 def sub_func():
-	global value1, value2, value3, dot, value
+	global value1, value2, value3, dot
 	if(value1 != None):
 		equ_func()
-	value1 = value
+	value1 = value.get()
 	value2 = "-"
-	value = 0
+	value.set(0)
 	dot = False
 
 
 def mult_func():
-	global value1, value2, value3, dot, value
+	global value1, value2, value3, dot
 	if(value1 != None):
 		equ_func()
-	value1 = value
+	value1 = value.get()
 	value2 = "*"
-	value = 0
+	value.set(0)
 	dot = False
 
 
 def div_func():
-	global value1, value2, value3, dot, value
+	global value1, value2, value3, dot
 	if(value1 == None):
 		equ_func()
-	value1 = value;
+	value1 = value.get();
 	value2 = '/'
-	value = 0
+	value.set(0)
 	dot = False
 
 def pow_func():
-	global value1, value2, value3, dot, value
+	global value1, value2, value3, dot
 	if(Pannel2_4.winfo_children()[2].config()['text'][4] == 'x^y'):
 		if(value1 == None):
 			equ_func()
-		value1 = value
+		value1 = value.get()
 		value2 = "^"
 	else:
 		if(value1 == None):
 			equ_func()
-		value1 = value
+		value1 = value.get()
 		value2 = "√"
-	value = 0
+	value.set(0)
 	dot = False
 
 
 def perc_func():
 	global value, calc_ended
-	if(value > 1):
+	if(value.get() > 1):
 		error()
 	else:
-		temp = value * 100
+		temp = value.get() * 100
 		value = tkinter.StringVar()
-		value = temp + "%"
-		updatetext(value)
-		value = temp
+		value.set(str(temp) + "%")
+		updatetext()
+		value = tkinter.IntVar()
+		value.set(temp)
 		calc_ended = True
 
 def add_coma():
 	global dot, value
+	temp = value.get()
+	value = tkinter.DoubleVar()
+	value.set(temp)
 	dot = -1
 
 def ans_func():
 	global value3, value, dot, calc_ended
 	if(Pannel2_4.winfo_children()[2].config()['text'][4] == 'Ans'):
-		value = value3
+		value.set(value3)
 	else:
-		if(value == 0):
-			value = random.random()
+		if(value.get() == 0):
+			value.set(random.random())
 		else:
-			value = value * random.random()
+			value.set(value.get() * random.random())
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def sqrt_func():
 	global value, dot, calc_ended
 	if(Pannel2_3.winfo_children()[2].config()['text'][4] == '√'):
-		value = math.sqrt(value)
+		value.set(math.sqrt(value.get()))
 	else:
-		value = math.pow(value, 2)
+		value.set(math.pow(value.get(), 2))
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def tan_func():
 	global value, dot, angle, calc_ended
 	if(Pannel2_3.winfo_children()[1].config()['text'][4] == 'tan'):
-		if(value%math.pi == math.pi/2):
+		if(value.get()%math.pi == math.pi/2):
 			error()
 		else:
-			value = math.tan(value) if(angle.get() == "rad") else math.tan(math.radians(value))
+			value.set(math.tan(value.get()) if(angle.get() == "rad") else math.tan(math.radians(value.get())))
 	else:
-		value = math.atan(value) if (angle.get() == "rad") else math.degrees(math.atan(value))
+		value.set(math.atan(value.get()) if (angle.get() == "rad") else math.degrees(math.atan(value.get())))
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def x10_func():
-	global value1, value2, value, dot, value
+	global value1, value2, value, dot
 	dot = False
-	value1 = value
+	value1 = value.get()
 	value2 = 'x10'
-	value = 0
+	value.set(0)
 
 def log_func():
 	global value, dot, calc_ended
 	if(Pannel2_2.winfo_children()[2].config()['text'][4] == 'log'):
-		if(value == 0):
+		if(value.get() == 0):
 			error()
 		else:
-			value = math.log(value, 10)
-			updatetext(value)
+			value.set(math.log(value.get(), 10))
+			updatetext()
 			calc_ended = True
 	else:
-		value = math.pow(10, value)
-		updatetext(value)
+		value.set(math.pow(10, value.get()))
+		updatetext()
 		calc_ended = True
 	dot = False
 
 def cos_func():
 	global value, dot, calc_ended
 	if(Pannel2_2.winfo_children()[1].config()['text'][4] == 'cos'):
-		value = math.cos(value) if(angle.get() == "rad") else math.cos(math.radians(value))
+		value.set(math.cos(value.get()) if(angle.get() == "rad") else math.cos(math.radians(value.get())))
 	else:
-		value = math.acos(value) if(angle.get() == "rad") else math.degrees(math.acos(value))
+		value.set(math.acos(value.get()) if(angle.get() == "rad") else math.degrees(math.acos(value.get())))
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def sin_func():
 	global value, dot, calc_ended
 	if(Pannel2_1.winfo_children()[1].config()['text'][4] == 'sin'):
-		value = math.sin(value) if(angle.get() == "rad") else math.sin(math.radians(value))
+		value.set(math.sin(value.get()) if(angle.get() == "rad") else math.sin(math.radians(value.get())))
 	else:
-		value = math.asin(value) if(angle.get() == "rad") else math.degrees(math.asin(value))
+		value.set(math.asin(value.get()) if(angle.get() == "rad") else math.degrees(math.asin(value.get())))
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def ln_func():
 	global value, dot, calc_ended
 	if(Pannel2_1.winfo_children()[2].config()['text'][4] == 'ln'):
-		if(value == 0):
+		if(value.get() == 0):
 			error()
 		else:
-			value = math.log(value)
+			value.set(math.log(value.get()))
 	else:
-		value = math.exp(value)
+		value.set(math.exp(value.get()))
 	dot = False
-	updatetext(value)
+	updatetext()
 	calc_ended = True
 
 def inv_func():
 	global value, dot
 	dot = False
-	if(value == 0):
+	if(value.get() == 0):
 		error()
-	value = 1 / value
-	updatetext(value)
+	value.set(1 / value.get())
+	updatetext()
 
 def fact_func():
 	global value, dot, calc_ended
 	dot = False
-	if(int(value) == value):
-		value = math.factorial(value)
-		updatetext(value)
+	if(int(value.get()) == value.get()):
+		value.set(math.factorial(value.get()))
+		updatetext()
 		calc_ended = True
 	else:
 		error()
@@ -419,7 +401,7 @@ def open_par():
 		par.append(value2)
 		value1 = value2 = None
 		par_value += 2
-		value = 0
+		value.set(0)
 
 def close_par():
 	global value1, value2, value3, value, dot, par, par_value
@@ -428,12 +410,13 @@ def close_par():
 		value2 = par[par_value]
 		value1 = par[par_value - 1]
 		par_value -= 2
+		print("value =",value.get(), " | value1 = ", value1, " | value2 = ", value2, " | value3 = ", value3, " | dot = ", dot, " | par = ", par, " | par_value = ", par_value)		
 		equ_func()
 
 def neg_func():
 	global value
-	value = -value
-	updatetext(value)
+	value.set(-value.get())
+	updatetext()
 
 # Close Button
 Close = tkinter.Button(fenetre, text="Fermer", width=6, height=2, command=fenetre.quit)
@@ -445,18 +428,8 @@ Close.pack()
 # Display Box
 Frame0 = tkinter.Frame(fenetre, borderwidth=2, relief=tkinter.GROOVE)
 Frame0.pack(side=tkinter.TOP, padx=30, pady=30)
-Label0_0 = tkinter.Label(Frame0, width=32, height=2, text=displayValue.get(), anchor=tkinter.E)
-Label0_1 = tkinter.Label(Frame0, width=5, height=1, text=angle.get(), anchor= tkinter.NE)
-Label0_2 = (tkinter.Label(Frame0, width=4, height=1, text="from", anchor= tkinter.W))
-Label0_3 = (tkinter.Label(Frame0, fg='red', width=3, height=1, text=fromBase.get(), anchor= tkinter.W))
-Label0_4 = (tkinter.Label(Frame0, width=2, height=1, text="to", anchor= tkinter.W))
-Label0_5 = (tkinter.Label(Frame0, fg='blue', width=3, height=1, text=toBase.get(), anchor= tkinter.W))
+Label0_0 = tkinter.Label(Frame0, width=32, height=2, text=value.get(), anchor=tkinter.E)
 Label0_0.pack(side=tkinter.RIGHT, padx=15);
-Label0_1.pack(side=tkinter.TOP, padx=0);
-Label0_2.pack(side=tkinter.LEFT, padx=0, pady=0);
-Label0_3.pack(side=tkinter.LEFT, padx=0, pady=0);
-Label0_4.pack(side=tkinter.LEFT, padx=0, pady=0);
-Label0_5.pack(side=tkinter.LEFT, padx=0, pady=0);
 
 
 # frame 2
@@ -464,25 +437,16 @@ Frame2 = tkinter.Frame(fenetre, borderwidth=2, relief=tkinter.GROOVE)
 Frame2.pack(side=tkinter.LEFT, padx=30, pady=30)
 
 
-# Pannel 2_7
-"""
-Pannel2_7 = tkinter.PanedWindow(Frame2, orient=tkinter.HORIZONTAL)
-Pannel2_7.pack(side=tkinter.TOP, expand=tkinter.Y, fill=tkinter.BOTH, pady=2, padx=2)
-
-Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Dec', variable=fromBase, value="dec"))
-Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Bin', variable=fromBase, value="bin"))
-Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Oct', variable=fromBase, value="oct"))
-Pannel2_7.add(tkinter.Radiobutton(Pannel2_7, fg='red', text='Hexa', variable=fromBase, value="hex"))
-"""
-
 # Pannel 2_6
 Pannel2_6 = tkinter.PanedWindow(Frame2, orient=tkinter.HORIZONTAL)
 Pannel2_6.pack(side=tkinter.TOP, expand=tkinter.Y, fill=tkinter.BOTH, pady=2, padx=2)
 
-Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, fg='blue', text='Dec', variable=toBase, value="dec"))
-Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, fg='blue', text='Bin', variable=toBase, value="bin"))
-Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, fg='blue', text='Oct', variable=toBase, value="oct"))
-Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, fg='blue', text='Hexa', variable=toBase, value="hex"))
+base = tkinter.IntVar()
+base.set(10)
+Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, text='Dec', variable=base, value=10))
+Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, text='Bin', variable=base, value=2))
+Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, text='Oct', variable=base, value=8))
+Pannel2_6.add(tkinter.Radiobutton(Pannel2_6, text='Hexa', variable=base, value=16))
 
 
 # Pannel 2_5
@@ -498,7 +462,7 @@ Pannel2_0 = tkinter.PanedWindow(Frame2, orient=tkinter.HORIZONTAL)
 Pannel2_0.pack(side=tkinter.TOP, expand=tkinter.Y, fill=tkinter.BOTH, pady=2, padx=2)
 
 Pannel2_0.add(tkinter.Button(Pannel2_0, width=5, height=2, text="2nde", anchor=tkinter.CENTER, command=Seconde_func))
-Pannel2_0.add(tkinter.Button(Pannel2_0, width=5, height=2, text="- x", anchor=tkinter.CENTER, command=neg_func))
+Pannel2_0.add(tkinter.Button(Pannel2_0, width=5, height=2, text="-x", anchor=tkinter.CENTER, command=neg_func))
 Pannel2_0.add(tkinter.Button(Pannel2_0, width=5, height=2, text='x!', anchor=tkinter.CENTER, command=fact_func))
 
 
@@ -603,6 +567,9 @@ Pannel1_4.add(tkinter.Button(Pannel1_4, width=2, height=2, text='+', anchor=tkin
 Frame3 = tkinter.Frame(fenetre, borderwidth=2, relief=tkinter.GROOVE)
 Frame3.pack(side=tkinter.LEFT, padx=15, pady=30)
 
+
+def test():
+	print("test")
 #KeyEvent
 def key(event):
 	key_pressed = {
@@ -634,6 +601,5 @@ def key(event):
 		key_pressed()
 
 fenetre.bind("<Key>", key)
-fenetre.bind("<Button-1>", updateDisplay)
 
 fenetre.mainloop()

@@ -6,4 +6,9 @@ SSCalculator.egg-info/PKG-INFO
 SSCalculator.egg-info/SOURCES.txt
 SSCalculator.egg-info/dependency_links.txt
 SSCalculator.egg-info/top_level.txt
+sscalculator/Onworking__init__.py
 sscalculator/__init__.py
+sscalculator/test.py
+sscalculator/test2.py
+sscalculator/test3.py
+sscalculator/test__init__.py
